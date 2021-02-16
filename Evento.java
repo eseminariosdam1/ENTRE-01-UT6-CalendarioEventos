@@ -5,7 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Representa a un evento del calendario
- * 
+ *  @Eneko Seminario
+ *  
  */
 public class Evento {
     private String nombre;
@@ -23,7 +24,10 @@ public class Evento {
      * Todos los argumento recibidos son correctos (no hay incoherencias)
      */                 
     public Evento(String nombre, String fecha, String horaInicio,
-    String horaFin) {
+    String horaFin){
+         this.nombre = formatearNombre(nombre);
+         this.fecha = LocalDate.parse(fecha);
+         this.horaInicio = LocalTime
          
     }
 
