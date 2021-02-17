@@ -27,24 +27,30 @@ public class Evento {
      */                 
     public Evento(String nombre, String fecha, String horaInicio,
     String horaFin){
-         this.nombre = formatearNombre(nombre);
-          // String resul = "";
-        // String[] nom = nombre.split(" ");
-        // for(String pal: nom){
-            // if(!pal.equals(" ") && !pal.equals("")){
-                // pal.trim();
-                // String nom1 = pal.substring(0,1).toUpperCase();
-                // String nom2 = pal.substring(1);
-                // resul += nom1 + nom2 + " ";                
-            // }
-            // return nom;
-        // }        
-        
+         this.nombre = nombreFormateado(nombre);
          this.fecha = LocalDate.parse(fecha);
          this.horaInicio = LocalTime.parse(horaInicio);
          this.horaFin = LocalTime.parse(horaFin);
          
     }
+
+    /**
+     * Método para formatear nombre
+     *
+     * @param  se pasa el nombre a formatear
+     * @return nombre con el formato correcto
+     */
+    public String nombreFormateado(String nombre)
+    {
+        String[] resul = nombre.split(" ");
+        this.nombre = "";
+            for (int i = 0; i < resul.length; i++){
+                this.nombre = nombre + "" + resul[i].trim().toUpperCase();
+            
+        }
+        return nombreFormateado;
+    }
+
 
    
 
@@ -135,8 +141,8 @@ public class Evento {
      * que se obtendrá a partir de la fecha del evento
      */
     public Mes getMes() {
-        
-        return null;
+        Mes[] meses = Mes.values();
+        return meses[fecha.getMonthValue()];
     }
 
     /**
