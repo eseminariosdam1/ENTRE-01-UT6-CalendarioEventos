@@ -1,8 +1,10 @@
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-
+import java.time.DayOfWeek;
+import java.time.Month;
 /**
  * Representa a un evento del calendario
  *  @Eneko Seminario
@@ -26,8 +28,21 @@ public class Evento {
     public Evento(String nombre, String fecha, String horaInicio,
     String horaFin){
          this.nombre = formatearNombre(nombre);
+          // String resul = "";
+        // String[] nom = nombre.split(" ");
+        // for(String pal: nom){
+            // if(!pal.equals(" ") && !pal.equals("")){
+                // pal.trim();
+                // String nom1 = pal.substring(0,1).toUpperCase();
+                // String nom2 = pal.substring(1);
+                // resul += nom1 + nom2 + " ";                
+            // }
+            // return nom;
+        // }        
+        
          this.fecha = LocalDate.parse(fecha);
-         this.horaInicio = LocalTime
+         this.horaInicio = LocalTime.parse(horaInicio);
+         this.horaFin = LocalTime.parse(horaFin);
          
     }
 
@@ -95,6 +110,24 @@ public class Evento {
      */
     public int getDia() {
         return 0;
+        int dia = 0;
+        switch(fecha.getDayOfWeek()){
+            case MONDAY: dia = 1;
+            return 1;
+            case TUESDAY: dia = 2;
+            return 2;
+            case WEDNESDAY: dia = 3;
+            return 3;
+            case THURSDAY: dia = 4;
+            return 4;
+            case FRIDAY: dia = 5;
+            return 5;
+            case SATURDAY: dia = 6;
+            return 6;
+            case SUNDAY: dia = 7;
+            return 7;
+        }
+        return dia;
     }
 
     /**
@@ -102,6 +135,7 @@ public class Evento {
      * que se obtendrá a partir de la fecha del evento
      */
     public Mes getMes() {
+        
         return null;
     }
 
