@@ -27,32 +27,17 @@ public class Evento {
      */                 
     public Evento(String nombre, String fecha, String horaInicio,
     String horaFin){
-         this.nombre = nombreFormateado(nombre);
-         this.fecha = LocalDate.parse(fecha);
-         this.horaInicio = LocalTime.parse(horaInicio);
-         this.horaFin = LocalTime.parse(horaFin);
+            String[] nombres = nombre.split(" ");
+            this.nombre = "";
+                for (int i = 0; i < nombres.length; i++){
+                    this.nombre = nombre + "" + nombres[i].trim().toUpperCase();
+                
+            }
+            this.fecha = LocalDate.parse(fecha);
+            this.horaInicio = LocalTime.parse(horaInicio);
+            this.horaFin = LocalTime.parse(horaFin);
          
     }
-
-    /**
-     * Método para formatear nombre
-     *
-     * @param  se pasa el nombre a formatear
-     * @return nombre con el formato correcto
-     */
-    public String nombreFormateado(String nombre)
-    {
-        String[] resul = nombre.split(" ");
-        this.nombre = "";
-            for (int i = 0; i < resul.length; i++){
-                this.nombre = nombre + "" + resul[i].trim().toUpperCase();
-            
-        }
-        return nombreFormateado;
-    }
-
-
-   
 
     /**
      * accesor para el nombre del evento
@@ -115,23 +100,23 @@ public class Evento {
      * que se obtendrá a partir de la fecha del evento
      */
     public int getDia() {
-        return 0;
+       
         int dia = 0;
         switch(fecha.getDayOfWeek()){
             case MONDAY: dia = 1;
-            return 1;
-            case TUESDAY: dia = 2;
-            return 2;
-            case WEDNESDAY: dia = 3;
-            return 3;
-            case THURSDAY: dia = 4;
-            return 4;
-            case FRIDAY: dia = 5;
-            return 5;
-            case SATURDAY: dia = 6;
-            return 6;
-            case SUNDAY: dia = 7;
-            return 7;
+            break;
+            case TUESDAY: dia= 2;
+            break;
+            case WEDNESDAY: dia= 3;
+            break;
+            case THURSDAY: dia= 4;
+            break;
+            case FRIDAY: dia= 5;
+            break;
+            case SATURDAY: dia= 6;
+            break;
+            case SUNDAY: dia= 7;
+            break;
         }
         return dia;
     }
@@ -149,7 +134,9 @@ public class Evento {
      * calcula y devuelve la duración del evento en minutos
      */
     public int getDuracion() {
-        return 0;
+        int total = ((horaFin.getHour() * 60) + horaFin.getMinute()) - 
+        ((horaInicio.getHour() * 60) + horaInicio.getMinute());
+        return  total;
 
     }
 
