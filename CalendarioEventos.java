@@ -1,8 +1,12 @@
- import java.util.ArrayList;
+
+
+import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Arrays;
-
+import java.util.Map;
+import java.util.Iterator;
 /**
  * Esta clase modela un sencillo calendario de eventos.
  * 
@@ -67,7 +71,7 @@ public class CalendarioEventos {
         try{ 
         ArrayList<Evento> meses = calendario.get(mes);
         return meses.size();
-    }catch(Exception e){
+        }catch(Exception e){
         return 0;
    }
     }
@@ -79,9 +83,16 @@ public class CalendarioEventos {
      *  
      */
     public TreeSet<Mes> mesesConMasEventos() {
-        
-        
-        return null;
+        Set<Mes> conjuntoMeses = calendario.keySet();
+        TreeSet<Mes> resultado = new TreeSet<>();
+        int maxEventos = 0;
+        for(Mes mes : conjuntoMeses){
+        if(maxEventos < calendario.get(mes).size()){
+            maxEventos = calendario.get(mes).size();
+            resultado.add(mes);
+        }
+        }
+        return resultado;
     }
 
     
