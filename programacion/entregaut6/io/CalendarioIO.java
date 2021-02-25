@@ -1,3 +1,4 @@
+package programacion.entregaut6.io;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;

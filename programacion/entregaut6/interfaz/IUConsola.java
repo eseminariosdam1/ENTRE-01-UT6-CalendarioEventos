@@ -1,4 +1,6 @@
+
 import java.util.Scanner;
+package programacion.entregaut6.interfaz;
 
 public class IUConsola {
     private static final int MOSTRAR_CALENDARIO = 1;

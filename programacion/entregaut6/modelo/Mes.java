@@ -1,4 +1,4 @@
-
+package programacion.entregaut6.modelo;
 /**
  * Enum de la clase Mes
  * 
