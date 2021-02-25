@@ -101,8 +101,12 @@ public class CalendarioEventos {
      * Se devuelve uno solo (el primero encontrado) aunque haya varios
      */
     public String eventoMasLargo() {
-        
-        return null;
+         String str = "";
+        Set<Map.Entry<Mes,ArrayList<Evento>>> nuevo = calendario.entrySet();
+        for( Map.Entry<Mes, ArrayList<Evento>> entrada : nuevo){
+            str = "\n" + str + entrada.getKey() + "\t" + entrada.getValue() +"\n";
+        }   
+        return str;
     }
 
     /**
